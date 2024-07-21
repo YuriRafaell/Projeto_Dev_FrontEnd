@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,31 +7,33 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Tab } from '@mui/material';
+import { differenceInDays, parseISO, isValid, format } from 'date-fns';
+import MenuComponent from './MenuComponent';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [dados, setDados] = useState([])
+  const [dados, setDados] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/Contas").
-      then(resp => resp.json()).
-      then(data => {
-        setDados(data)
-        console.log(data)
-      }).
-      catch(err => {
-        console.error(err)
+    fetch("http://localhost:3000/Contas")
+      .then(resp => resp.json())
+      .then(data => {
+        setDados(data);
+        console.log(data);
       })
-  }, [])
+      .catch(err => {
+        console.error(err);
+      });
+  }, []);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
       color: theme.palette.common.white,
+      textAlign: 'center', // Centraliza o texto no cabeçalho
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
+      textAlign: 'center', // Centraliza o texto no corpo da tabela
     },
   }));
 
@@ -40,54 +41,65 @@ function App() {
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     '&:last-child td, &:last-child th': {
       border: 0,
     },
   }));
 
-  // const myObjects = dados.map(o => <li key={o.id}>{o.Nome}: {o.Idade}</li>)
-
-  const myObjects = 
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableBody>
-          {dados.map((o) => (
-            <StyledTableRow key={o.Nome}>
-              <StyledTableCell component="th" scope="row">
-                {o.Nome}
-              </StyledTableCell>
-              <StyledTableCell align="right">{o.Tipo_de_visto}</StyledTableCell>
-              <StyledTableCell align="right">{o.Data_de_agendamento}</StyledTableCell>
-              <StyledTableCell align="right">{o.Data_de_entrevista}</StyledTableCell>
-              <StyledTableCell align="right">{o.Data_de_analise}</StyledTableCell>
-              <StyledTableCell align="right">{o.Data_de_Viagem}</StyledTableCell>
-              <StyledTableCell align="right">{o.Data_de_entrega_do_visto}</StyledTableCell>
-              <StyledTableCell align="right"> FAZER </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+  const convertDateToISO = (dateStr) => {
+    const [day, month, year] = dateStr.split('/');
+    return `${year}-${month}-${day}`;
+  };
 
   return (
-    <div>
+    <div >
+      <MenuComponent />
       <h1>Obtendo o visto</h1>
-      <TableHead >
-          <TableRow>
-            <StyledTableCell align='right'> Nome </StyledTableCell>
-            <StyledTableCell align='right'> Tipo de visto </StyledTableCell>
-            <StyledTableCell align='right'> Data de agendamento </StyledTableCell>
-            <StyledTableCell align='right'> Data de entrevista </StyledTableCell>
-            <StyledTableCell align='right'> Data de análise </StyledTableCell>
-            <StyledTableCell align='right'> Data de viagem </StyledTableCell>
-            <StyledTableCell align='right'> Data de entrega do visto </StyledTableCell>
-            <StyledTableCell align="right"> Dias corridos de espera </StyledTableCell>
-          </TableRow>
-        </TableHead>
-        {myObjects}
+      <TableContainer component={Paper} style={{ maxWidth: '1200px', width: '100%', display: 'flex', justifyContent: 'center', padding: '20px' , margin: '0 20px' }}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Nome</StyledTableCell>
+              <StyledTableCell>Tipo de visto</StyledTableCell>
+              <StyledTableCell>Data de agendamento</StyledTableCell>
+              <StyledTableCell>Data de entrevista</StyledTableCell>
+              <StyledTableCell>Data de análise</StyledTableCell>
+              <StyledTableCell>Data de viagem</StyledTableCell>
+              <StyledTableCell>Data de entrega do visto</StyledTableCell>
+              <StyledTableCell>Dias corridos de espera</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {dados.map((o) => {
+              const isoAnalysisDateStr = convertDateToISO(o.Data_de_analise);
+              const isoDeliveryDateStr = convertDateToISO(o.Data_de_entrega_do_visto);
+              
+              const analysisDate = parseISO(isoAnalysisDateStr);
+              const deliveryDate = parseISO(isoDeliveryDateStr);
+
+              const daysDifference = isValid(analysisDate) && isValid(deliveryDate)
+                ? differenceInDays(deliveryDate, analysisDate)
+                : 'Aguardando Data de Entrega';
+
+            
+              return (
+                <StyledTableRow key={o.Nome}>
+                  <StyledTableCell>{o.Nome}</StyledTableCell>
+                  <StyledTableCell>{o.Tipo_de_visto}</StyledTableCell>
+                  <StyledTableCell>{o.Data_de_agendamento}</StyledTableCell>
+                  <StyledTableCell>{o.Data_de_entrevista}</StyledTableCell>
+                  <StyledTableCell>{o.Data_de_analise}</StyledTableCell>
+                  <StyledTableCell>{o.Data_de_Viagem}</StyledTableCell>
+                  <StyledTableCell>{o.Data_de_entrega_do_visto}</StyledTableCell>
+                  <StyledTableCell>{daysDifference}</StyledTableCell>
+                </StyledTableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
