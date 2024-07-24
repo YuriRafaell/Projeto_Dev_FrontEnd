@@ -1,8 +1,12 @@
-# React + Vite
+# Projeto final
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Falta fazer
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[] Linkar o navbar (home, form, visto, dicas, contatos) (Ao fazer de cada um apagar)
+[] Arrumar CSS de tudo
+[] Fazer formulario funcinar
+[] Fazer o pitch no md
+[] Usar os routes (POST, GET, PUT, DELETE, PATCH) (Ao fazer de cada um apagar)
+[] Criar componente home
+[] Criar componente dicas
+[] Criar componente contatos

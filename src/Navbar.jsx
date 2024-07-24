@@ -12,8 +12,10 @@ function MenuComponent() {
     </Typography>
       <Box sx={{ display: 'flex', gap: 2 }}>
         <Button color="inherit" href="/">Home</Button>
-        <Button color="inherit" href="/sobre">Sobre</Button>
+        <Button color="inherit" href="/form">Formulário</Button>
         <Button color="inherit" href="/visto">Visto</Button>
+        <Button color="inherit" href="/dicas">Dicas</Button>
+        <Button color="inherit" href="/contatos">Contatos</Button>
       </Box> 
     </Toolbar>
   </AppBar>
