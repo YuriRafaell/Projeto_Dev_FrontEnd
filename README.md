@@ -12,7 +12,7 @@
 
 [ ] Usar os routes (POST, GET, PUT, DELETE, PATCH) (Ao fazer de cada um apagar)
 
-[ ] Criar componente home
+[X] Criar componente home
 
 [ ] Criar componente dicas
 
