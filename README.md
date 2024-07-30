@@ -2,7 +2,7 @@
 
 ### Falta fazer
 
-[ ] Linkar o navbar (home, form, visto, dicas, contatos) (Ao fazer de cada um apagar)
+[ ] Linkar o navbar (dicas, contatos) (Ao fazer de cada um apagar)
 
 [ ] Arrumar CSS de tudo
 
@@ -10,7 +10,7 @@
 
 [ ] Fazer o pitch no md
 
-[ ] Usar os routes (POST, GET, PUT, DELETE, PATCH) (Ao fazer de cada um apagar)
+[ ] Usar os routes (POST, PUT, DELETE, PATCH) (Ao fazer de cada um apagar)
 
 [X] Criar componente home
 
