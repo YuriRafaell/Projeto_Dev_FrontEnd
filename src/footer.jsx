@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, Typography, CssBaseline } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -7,10 +7,10 @@ const Footer = () => {
       sx={{
         width: "100%",
         height: "auto",
-        backgroundColor: "primary.main",
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Cor semelhante ao Navbar
         paddingTop: "0.5rem",
         paddingBottom: "0.5rem",
-        color: "white"
+        color: "white",
       }}
     >
       <Container maxWidth="lg">

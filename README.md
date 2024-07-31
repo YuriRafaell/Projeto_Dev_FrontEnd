@@ -2,7 +2,7 @@
 
 ### Falta fazer
 
-[ ] Linkar o navbar (dicas, contatos) (Ao fazer de cada um apagar)
+[ ] Linkar o navbar (home, forms, tabela, dicas, contatos) (Ao fazer de cada um apagar)
 
 [ ] Arrumar CSS de tudo
 
@@ -13,6 +13,8 @@
 [ ] Usar os routes (POST, PUT, DELETE, PATCH) (Ao fazer de cada um apagar)
 
 [X] Criar componente home
+
+[ ] Criar componente do grafico
 
 [ ] Criar componente dicas
 
