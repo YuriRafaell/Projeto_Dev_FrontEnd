@@ -4,7 +4,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 
 function MenuComponent() {
   return (
-    <AppBar position="static" sx={{ width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
+    <AppBar position="fixed" sx={{ width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <FaPaperPlane style={{ fontSize: 30, marginRight: 10 }} />
@@ -15,7 +15,7 @@ function MenuComponent() {
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
             color="inherit"
-            href="/"
+            href="#home"
             sx={{
               '&:hover': {
                 backgroundColor: '#4F43CB',
@@ -28,7 +28,7 @@ function MenuComponent() {
           </Button>
           <Button
             color="inherit"
-            href="/form"
+            href="#formulario"
             sx={{
               '&:hover': {
                 backgroundColor: '#4F43CB',

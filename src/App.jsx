@@ -26,7 +26,7 @@ function App() {
       <CssBaseline />
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <MenuComponent />
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ paddingTop: '64px', flex: 1 }}>
           <Home />
           <Form />
         </Box>

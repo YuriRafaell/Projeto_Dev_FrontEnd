@@ -4,7 +4,7 @@ import Image from './imgs/home.png';
 
 function Home() {
   return (
-    <Box sx={{ padding: 4 }}>
+    <Box id='home' sx={{ padding: 4 }}>
       <Grid container spacing={4} alignItems="center">
         {/* Coluna de Texto */}
         <Grid item xs={12} md={6}>

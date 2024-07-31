@@ -25,7 +25,7 @@ const Form = () => {
 
     return (
         <div>
-            <Box sx={{ p: 2, maxWidth: '600px', mx: 'auto' }}>
+            <Box id="formulario" sx={{ p: 2, maxWidth: '600px', mx: 'auto' }}>
                 <h1>Formulário</h1>
                 <form onSubmit={handleSubmit}>
                     <TextField

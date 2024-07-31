@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { differenceInDays, parseISO, isValid, format } from 'date-fns';
 import MenuComponent from './Navbar';
+import Footer from './footer';
 
 function Visto() {
     const [dados, setDados] = useState([]);
@@ -97,6 +98,7 @@ function Visto() {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <Footer />
         </div>
     );
 }

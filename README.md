@@ -2,7 +2,7 @@
 
 ### Falta fazer
 
-[ ] Linkar o navbar (home, forms, tabela, dicas, contatos) (Ao fazer de cada um apagar)
+[ ] Linkar o navbar (tabela(pag nova, dentro dela, vai ter contato), dicas(pag nova), contatos) (Ao fazer de cada um apagar)
 
 [ ] Arrumar CSS de tudo
 
