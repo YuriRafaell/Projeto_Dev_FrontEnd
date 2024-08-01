@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { differenceInDays, parseISO, isValid, format } from 'date-fns';
-import MenuComponent from './Navbar';
-import Footer from './footer';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TextField, Button, IconButton } from '@mui/material';
+import { differenceInDays, parseISO, isValid } from 'date-fns';
+import tableCellClasses from '@mui/material/TableCell';
+import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from 'react-router-dom';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 
 function Visto() {
     const [dados, setDados] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
+    const navigate = useNavigate(); // Hook para navegação
 
     useEffect(() => {
         fetch("http://localhost:3000/Contas")
             .then(resp => resp.json())
             .then(data => {
                 setDados(data);
+                setFilteredData(data);
                 console.log(data);
             })
             .catch(err => {
@@ -26,15 +26,30 @@ function Visto() {
             });
     }, []);
 
+    useEffect(() => {
+        if (searchTerm) {
+            const filtered = dados.filter(item =>
+                item.Nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                item.Tipo_de_visto.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredData(filtered);
+        } else {
+            setFilteredData(dados);
+        }
+    }, [searchTerm, dados]);
+
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
-            backgroundColor: theme.palette.common.black,
+            backgroundColor: theme.palette.primary.main,
             color: theme.palette.common.white,
-            textAlign: 'center', // Centraliza o texto no cabeçalho
+            textAlign: 'center',
+            fontSize: '0.75rem',
+            padding: '6px',
         },
         [`&.${tableCellClasses.body}`]: {
-            fontSize: 14,
-            textAlign: 'center', // Centraliza o texto no corpo da tabela
+            fontSize: '0.75rem',
+            textAlign: 'center',
+            padding: '6px',
         },
     }));
 
@@ -52,24 +67,103 @@ function Visto() {
         return `${year}-${month}-${day}`;
     };
 
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleClearSearch = () => {
+        setSearchTerm('');
+        setFilteredData(dados);
+    };
+
+    const handleAddButtonClick = () => {
+        navigate('/Form'); 
+    };
+
     return (
-        <div >
-            <MenuComponent />
-            <h1>Obtendo o visto</h1>
-            <TableContainer component={Paper} style={{ maxWidth: '1200px', width: '100%', display: 'flex', justifyContent: 'center', padding: '20px', margin: '0 20px' }}>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Nome</StyledTableCell>
-                            <StyledTableCell>Tipo de visto</StyledTableCell>
-                            <StyledTableCell>Data de entrega documentos</StyledTableCell>
-                            <StyledTableCell>Data de viagem</StyledTableCell>
-                            <StyledTableCell>Data de entrega do visto</StyledTableCell>
-                            <StyledTableCell>Dias corridos de espera</StyledTableCell>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '100vh',
+                color: 'white',
+                textAlign: 'center',
+                padding: '10px',
+                boxSizing: 'border-box',
+                mt: '-80px',
+                mb: '-50px',
+                overflow: 'hidden',
+            }}
+        >
+            <Typography variant="h5" component="h1" gutterBottom>
+                Obtendo o visto
+            </Typography>
+            <Box sx={{ marginBottom: '10px', marginLeft: '230px', display: 'flex', gap: 1 }}>
+                <TextField
+                    variant="outlined"
+                    label="Buscar"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    sx={{
+                        backgroundColor: 'white',
+                        borderRadius: '5px',
+                        width: '150px',
+                        fontSize: '0.75rem',
+                        justifyContent:'flex-end',
+                    }}
+                    inputProps={{ style: { fontSize: '0.75rem' } }}
+                />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleClearSearch}
+                    sx={{
+                        backgroundColor: '#4f43cb',
+                        fontSize: '0.75rem',
+                    }}
+                >
+                    Limpar
+                </Button>
+           
+             <Box   sx={{ flexGrow: 1 }} /> 
+             <PersonAddAlt1Icon
+                    onClick={handleAddButtonClick}
+                    sx={{
+                        color: 'white',
+                        ml: 20,
+                        fontSize: 40, // Aumenta o tamanho do ícone
+                        cursor: 'pointer',
+                        '&:hover': {
+                            color: '#3b30a7', // Muda a cor ao passar o mouse
+                        },
+                    }}
+                />
+             </Box> 
+            
+            <TableContainer
+                component={Paper}
+                sx={{
+                    maxWidth: '1000px',
+                    width: '100%',
+                    border: '10px solid #fff',
+                    overflow: 'hidden',
+                }}
+            >
+                <Table sx={{ minWidth: 600, borderCollapse: 'collapse' }} aria-label="customized table">
+                    <TableHead >
+                        <TableRow >
+                            <StyledTableCell sx={{ backgroundColor: '#4f43cb', color: 'white', textAlign: 'center' }}>Nome</StyledTableCell>
+                            <StyledTableCell sx={{ backgroundColor: '#4f43cb', color: 'white', textAlign: 'center' }}>Tipo de visto</StyledTableCell>
+                            <StyledTableCell sx={{ backgroundColor: '#4f43cb', color: 'white', textAlign: 'center' }}>Data de entrega documentos</StyledTableCell>
+                            <StyledTableCell sx={{ backgroundColor: '#4f43cb', color: 'white', textAlign: 'center' }}>Data de viagem</StyledTableCell>
+                            <StyledTableCell sx={{ backgroundColor: '#4f43cb', color: 'white', textAlign: 'center' }}>Data de entrega do visto</StyledTableCell>
+                            <StyledTableCell sx={{ backgroundColor: '#4f43cb', color: 'white', textAlign: 'center' }}>Dias corridos de espera</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {dados.map((o) => {
+                        {filteredData.map((o) => {
                             const isoAnalysisDateStr = convertDateToISO(o.Data_de_entrega_documentos);
                             const isoDeliveryDateStr = convertDateToISO(o.Data_de_entrega_do_visto);
 
@@ -83,23 +177,21 @@ function Visto() {
                                     : differenceInDays(currentDate, analysisDate)
                                 : "Data de entrega de documentos inválida";
 
-
                             return (
                                 <StyledTableRow key={o.Nome}>
-                                    <StyledTableCell>{o.Nome}</StyledTableCell>
-                                    <StyledTableCell>{o.Tipo_de_visto}</StyledTableCell>
-                                    <StyledTableCell>{o.Data_de_entrega_documentos}</StyledTableCell>
-                                    <StyledTableCell>{o.Data_de_Viagem}</StyledTableCell>
-                                    <StyledTableCell>{o.Data_de_entrega_do_visto}</StyledTableCell>
-                                    <StyledTableCell>{daysDifference}</StyledTableCell>
+                                    <StyledTableCell style={{ textAlign: 'center' }}>{o.Nome}</StyledTableCell>
+                                    <StyledTableCell style={{ textAlign: 'center' }}>{o.Tipo_de_visto}</StyledTableCell>
+                                    <StyledTableCell style={{ textAlign: 'center' }}>{o.Data_de_entrega_documentos}</StyledTableCell>
+                                    <StyledTableCell style={{ textAlign: 'center' }}>{o.Data_de_Viagem}</StyledTableCell>
+                                    <StyledTableCell style={{ textAlign: 'center' }}>{o.Data_de_entrega_do_visto}</StyledTableCell>
+                                    <StyledTableCell style={{ textAlign: 'center' }}>{daysDifference}</StyledTableCell>
                                 </StyledTableRow>
                             );
                         })}
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Footer />
-        </div>
+        </Box>
     );
 }
 
