@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, Container, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Grafico from './Grafico';
-
+import homeImage from './imgs/home.png';
 
 function Home() {
   const navigate = useNavigate();
@@ -48,14 +48,18 @@ function Home() {
           }}
         >
           <Box sx={{ flex: 1, p: 2, color: 'white', textAlign: 'left' }}>
-            <Typography variant="h2" component="h2" gutterBottom sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}>
-              Emissão do visto de Portugal
+            <Typography variant="h1" component="h1" gutterBottom sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}>
+              Emissão do visto para Portugal
             </Typography>
-            <Typography variant="h4" component="h3" gutterBottom sx={{ fontSize: { xs: '1.5rem', md: '1.5rem' }, marginBottom: '2rem' }}>
-              Tempo Médio de Espera
+            <Typography variant="h3" component="h3" gutterBottom sx={{ fontSize: { xs: '1.5rem', md: '1.5rem' }, marginBottom: '2rem' }}>
+              Tempo médio de espera referente ao consulado de Recife/PE
             </Typography>
             <Typography variant="body1" paragraph>
-              Planeje sua viagem para Portugal com confiança e tranquilidade. Nosso site fornece informações atualizadas sobre o tempo médio de obtenção dos diferentes tipos de vistos para Portugal, ajudando você a se preparar de forma eficaz. Com dados precisos sobre prazos e requisitos, você pode planejar sua viagem com antecedência, assegurando que tudo esteja em ordem para uma experiência de viagem tranquila e bem organizada.
+              Planeje sua viagem para Portugal com confiança e tranquilidade. Nosso site fornece
+              informações atualizadas sobre o tempo médio de obtenção dos diferentes tipos de vistos
+              para Portugal, ajudando você a se preparar de forma eficaz. Com dados precisos sobre
+              prazos e requisitos, você pode planejar sua viagem com antecedência, assegurando que
+              tudo esteja em ordem para uma experiência de viagem tranquila e bem organizada.
             </Typography>
           </Box>
           <Box 
@@ -68,13 +72,13 @@ function Home() {
             }}
           >
             <img
-              src="../Turismo.jpg"
-              alt="Visto bandeira de portugal e um oculos"
+              src={homeImage}
+              alt="Visto bandeira de portugal e nome precisa de visto para portugal?"
               style={{ 
                 height: 'auto', 
                 display: 'block', 
                 borderRadius: '16px',
-                opacity: 0.2, 
+                opacity: 0.7, 
                 maxWidth: '30em',
               }}
             />

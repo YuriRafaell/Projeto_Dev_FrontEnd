@@ -14,7 +14,7 @@
 
 [X] Criar componente home
 
-[ ] Criar componente do grafico
+[X] Criar componente do grafico
 
 [ ] Criar componente dicas
 

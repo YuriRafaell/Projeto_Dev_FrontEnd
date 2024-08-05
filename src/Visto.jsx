@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TextField, Button, IconButton } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TextField, Button } from '@mui/material';
 import { differenceInDays, parseISO, isValid } from 'date-fns';
 import tableCellClasses from '@mui/material/TableCell';
-import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 
@@ -77,7 +76,7 @@ function Visto() {
     };
 
     const handleAddButtonClick = () => {
-        navigate('/Form'); 
+        navigate('/Form');
     };
 
     return (
@@ -111,7 +110,7 @@ function Visto() {
                         borderRadius: '5px',
                         width: '150px',
                         fontSize: '0.75rem',
-                        justifyContent:'flex-end',
+                        justifyContent: 'flex-end',
                     }}
                     inputProps={{ style: { fontSize: '0.75rem' } }}
                 />
@@ -126,9 +125,9 @@ function Visto() {
                 >
                     Limpar
                 </Button>
-           
-             <Box   sx={{ flexGrow: 1 }} /> 
-             <PersonAddAlt1Icon
+
+                <Box sx={{ flexGrow: 1 }} />
+                <PersonAddAlt1Icon
                     onClick={handleAddButtonClick}
                     sx={{
                         color: 'white',
@@ -140,8 +139,8 @@ function Visto() {
                         },
                     }}
                 />
-             </Box> 
-            
+            </Box>
+
             <TableContainer
                 component={Paper}
                 sx={{
@@ -149,6 +148,7 @@ function Visto() {
                     width: '100%',
                     border: '10px solid #fff',
                     overflow: 'hidden',
+                    mb: 4, // Adiciona uma margem inferior para separar a tabela do componente Contato
                 }}
             >
                 <Table sx={{ minWidth: 600, borderCollapse: 'collapse' }} aria-label="customized table">
@@ -191,6 +191,47 @@ function Visto() {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+            {/* Seção de Contato */}
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    padding: '20px',
+                    backgroundColor: '#4f43cb',
+                    color: 'white',
+                    borderRadius: '8px',
+                    maxWidth: '600px',
+                    marginTop: '40px',
+                }}
+            >
+                <Typography variant="h6" component="h2" gutterBottom>
+                    Entre em Contato
+                </Typography>
+                <Typography variant="body1" paragraph>
+                    Se você tiver alguma dúvida ou precisar de assistência, não hesite em nos contatar. Estamos aqui para ajudar!
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        href="https://wa.me/5531987654321" // Substitua pelo número de WhatsApp desejado
+                        sx={{ backgroundColor: '#25D366' }}
+                    >
+                        Contato via WhatsApp 1
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        href="https://wa.me/5591987654321" // Substitua pelo número de WhatsApp desejado
+                        sx={{ backgroundColor: '#25D366' }}
+                    >
+                        Contato via WhatsApp 2
+                    </Button>
+                </Box>
+            </Box>
         </Box>
     );
 }
