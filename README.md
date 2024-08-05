@@ -19,7 +19,3 @@
 [ ] Criar componente dicas
 
 [ ] Criar componente contatos
-
-[X] Criar nova branch
-
-[ ] Fazer merge das branchs
