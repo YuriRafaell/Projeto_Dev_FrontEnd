@@ -25,9 +25,11 @@ const Form = () => {
 
     return (
         <div>
-            <Box id="formulario" sx={{ p: 2, maxWidth: '600px', mx: 'auto' }}>
-                <h1>Formulário</h1>
-                <form onSubmit={handleSubmit}>
+            <Box sx={{ p: 2, maxWidth: '600px', mx: 'auto', color: "white", alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',  mb: '40px', }}>
+                <h1 >Formulário</h1>
+                <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
                     <TextField
                         fullWidth
                         label="Nome"
@@ -35,6 +37,8 @@ const Form = () => {
                         value={formData.nome}
                         onChange={handleChange}
                         margin="normal"
+                        sx={{ backgroundColor: 'white' }}
+                       
                     />
                     <FormControl fullWidth margin="normal">
                         <InputLabel id="tipo-de-visto-label">Tipo de Visto</InputLabel>
@@ -43,6 +47,7 @@ const Form = () => {
                             name="tipoDeVisto"
                             value={formData.tipoDeVisto}
                             onChange={handleChange}
+                            sx={{ backgroundColor: 'white' }}
                         >
                             <MenuItem value="Estudante">Estudante</MenuItem>
                             <MenuItem value="Turismo">Turismo</MenuItem>
@@ -57,6 +62,7 @@ const Form = () => {
                         value={formData.dataDeEntregaDocumentos}
                         onChange={handleChange}
                         margin="normal"
+                        sx={{ backgroundColor: 'white' }}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -69,6 +75,7 @@ const Form = () => {
                         value={formData.dataDeViagem}
                         onChange={handleChange}
                         margin="normal"
+                        sx={{ backgroundColor: 'white' }}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -80,6 +87,7 @@ const Form = () => {
                             name="dataDeEntregaDoVisto"
                             value={formData.dataDeEntregaDoVisto}
                             onChange={handleChange}
+                            sx={{ backgroundColor: 'white' }}
                         >
                             <MenuItem value="NÃO ENTREGUE">NÃO ENTREGUE</MenuItem>
                             <MenuItem value={formData.dataDeEntregaDoVisto}>
@@ -87,7 +95,7 @@ const Form = () => {
                             </MenuItem>
                         </Select>
                     </FormControl>
-                    <Button type="submit" variant="contained" color="primary" fullWidth>
+                    <Button type="submit" variant="contained" color="primary" fullWidth   sx={{ backgroundColor: ' #4f43cb' }}>
                         Enviar
                     </Button>
                 </form>

@@ -11,6 +11,7 @@ const Footer = () => {
         paddingTop: "0.5rem",
         paddingBottom: "0.5rem",
         color: "white",
+        background: 'linear-gradient(to right, #3533cd, black)'
       }}
     >
       <Container maxWidth="lg">

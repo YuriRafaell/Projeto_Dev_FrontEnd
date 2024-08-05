@@ -1,31 +1,115 @@
 import React from 'react';
-import { Grid, Box, Typography } from '@mui/material';
-import Image from './imgs/home.png';
+import { Box, Typography, Container, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import Grafico from './Grafico';
+
 
 function Home() {
+  const navigate = useNavigate();
+
+  const handleSaibaMaisClick = () => {
+    navigate('/Visto');
+  };
+
   return (
-    <Box id='home' sx={{ padding: 4 }}>
-      <Grid container spacing={4} alignItems="center">
-        {/* Coluna de Texto */}
-        <Grid item xs={12} md={6}>
-          <Typography variant="h3" component="h1" gutterBottom>
-            Emissão do visto para Portugal
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        overflowX: 'hidden',
+      }}
+    >
+
+      {/* Conteúdo principal */}
+      <Container
+        maxWidth="lg"
+        sx={{
+          flex: '1 0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+          textAlign: 'right',
+          mt:15,
+          mb: 22,
+          overflowX: 'hidden',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            width: '100%',
+            maxWidth: '100%',
+            overflowX: 'hidden',
+          }}
+        >
+          <Box sx={{ flex: 1, p: 2, color: 'white', textAlign: 'left' }}>
+            <Typography variant="h2" component="h2" gutterBottom sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}>
+              Emissão do visto de Portugal
+            </Typography>
+            <Typography variant="h4" component="h3" gutterBottom sx={{ fontSize: { xs: '1.5rem', md: '1.5rem' }, marginBottom: '2rem' }}>
+              Tempo Médio de Espera
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Planeje sua viagem para Portugal com confiança e tranquilidade. Nosso site fornece informações atualizadas sobre o tempo médio de obtenção dos diferentes tipos de vistos para Portugal, ajudando você a se preparar de forma eficaz. Com dados precisos sobre prazos e requisitos, você pode planejar sua viagem com antecedência, assegurando que tudo esteja em ordem para uma experiência de viagem tranquila e bem organizada.
+            </Typography>
+          </Box>
+          <Box 
+            sx={{ 
+              flex: 1, 
+              p: 2,
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}
+          >
+            <img
+              src="../Turismo.jpg"
+              alt="Visto bandeira de portugal e um oculos"
+              style={{ 
+                height: 'auto', 
+                display: 'block', 
+                borderRadius: '16px',
+                opacity: 0.2, 
+                maxWidth: '30em',
+              }}
+            />
+          </Box>
+        </Box>
+      </Container>
+
+      {/* Gráfico */}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '20px',
+          mb: 5,
+          ml: 40,
+          overflowX: 'hidden',
+          flexDirection: 'column',
+        }}
+      >
+        <Box sx={{ width: '100%', maxWidth: '1200px' }}>
+          <Typography variant="h4" component="h2" gutterBottom sx={{ color: "white", ml: 12 }}>
+            Média de Dias de Espera por Tipo de Visto
           </Typography>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Tempo de espera referente ao vice-consulado de Recife/PE
-          </Typography>
-          <Typography variant="h6">
-          Planeje sua viagem para Portugal com confiança. Use nosso site para obter informações 
-          precisas e atualizadas sobre o tempo de obtenção do visto e garanta uma experiência de
-          viagem tranquila e bem organizada.
-          </Typography>
-        </Grid>
-        
-        {/* Coluna de Imagem */}
-        <Grid item xs={12} md={6}>
-          <Box component="img" src={Image} alt="Visto portugal" sx={{ width: '100%', height: 'auto' }} />
-        </Grid>
-      </Grid>
+          <Grafico />
+        </Box>
+        <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSaibaMaisClick}
+              sx={{ mt: 2, justifyContent:"center", background:'#4f43cb', width: '20%', ml: '-42vh', mt: 5}}
+            >
+              Saiba Mais
+            </Button>
+      </Box>
     </Box>
   );
 }
