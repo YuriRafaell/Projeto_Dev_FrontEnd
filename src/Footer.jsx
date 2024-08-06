@@ -6,7 +6,7 @@ const Footer = () => {
     <Box
       sx={{
         width: "100%",
-        height: "auto",
+        Height: "auto",
         backgroundColor: 'rgba(0, 0, 0, 0.8)', // Cor semelhante ao Navbar
         paddingTop: "0.5rem",
         paddingBottom: "0.5rem",

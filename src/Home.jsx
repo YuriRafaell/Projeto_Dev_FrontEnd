@@ -78,7 +78,7 @@ function Home() {
                 height: 'auto', 
                 display: 'block', 
                 borderRadius: '16px',
-                opacity: 0.7, 
+                opacity: 0.4, 
                 maxWidth: '30em',
               }}
             />

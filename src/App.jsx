@@ -3,7 +3,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Form from './Form';
 import Home from './Home';
-import Visto from './Visto'
+import Visto from './Visto';
+import Contato from './Contato';
 import { Router, Routes, Route } from 'react-router-dom';
 
 
@@ -16,6 +17,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/Visto" element={<Visto />} />
                     <Route path="/Form" element={<Form />} />
+                    <Route path="/Contato" element={<Contato />} />
                 </Routes>
             </main>
             <Footer />

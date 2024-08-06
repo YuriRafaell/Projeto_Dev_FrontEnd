@@ -27,7 +27,7 @@ const Form = () => {
         <div>
             <Box sx={{ p: 2, maxWidth: '600px', mx: 'auto', color: "white", alignItems: 'center',
                     justifyContent: 'center',
-                    textAlign: 'center',  mb: '40px', }}>
+                    textAlign: 'center',  mb: '40px', marginBottom: 0}}>
                 <h1 >Formulário</h1>
                 <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
                     <TextField
@@ -52,6 +52,7 @@ const Form = () => {
                             <MenuItem value="Estudante">Estudante</MenuItem>
                             <MenuItem value="Turismo">Turismo</MenuItem>
                             <MenuItem value="Trabalho">Trabalho</MenuItem>
+                            <MenuItem value="Moradia">Moradia</MenuItem>
                         </Select>
                     </FormControl>
                     <TextField
@@ -95,7 +96,7 @@ const Form = () => {
                             </MenuItem>
                         </Select>
                     </FormControl>
-                    <Button type="submit" variant="contained" color="primary" fullWidth   sx={{ backgroundColor: ' #4f43cb' }}>
+                    <Button type="submit" variant="contained" color="primary" fullWidth   sx={{ backgroundColor: ' #4f43cb', width: '15em', marginTop: '2em', marginBottom: '1em' }}>
                         Enviar
                     </Button>
                 </form>

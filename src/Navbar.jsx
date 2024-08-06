@@ -31,7 +31,7 @@ function Navbar() {
               '&:hover': { backgroundColor: '#4f43cb' },
               '&:active': { backgroundColor: '#4f43cb' },
             }}>Dicas</Button>
-            <Button color="inherit" href="/Contatos" sx={{
+            <Button color="inherit" href="/Contato" sx={{
               '&:hover': { backgroundColor: '#4f43cb' },
               '&:active': { backgroundColor: '#4f43cb' },
             }}>Contatos</Button>

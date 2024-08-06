@@ -96,10 +96,7 @@ function Visto() {
                 overflow: 'hidden',
             }}
         >
-            <Typography variant="h5" component="h1" gutterBottom>
-                Obtendo o visto
-            </Typography>
-            <Box sx={{ marginBottom: '10px', marginLeft: '230px', display: 'flex', gap: 1 }}>
+            <Box sx={{ marginBottom: '20px',margintop: '-10px',  marginLeft: '230px', display: 'flex', gap: 1 }}>
                 <TextField
                     variant="outlined"
                     label="Buscar"
@@ -191,47 +188,6 @@ function Visto() {
                     </TableBody>
                 </Table>
             </TableContainer>
-
-            {/* Seção de Contato */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    padding: '20px',
-                    backgroundColor: '#4f43cb',
-                    color: 'white',
-                    borderRadius: '8px',
-                    maxWidth: '600px',
-                    marginTop: '40px',
-                }}
-            >
-                <Typography variant="h6" component="h2" gutterBottom>
-                    Entre em Contato
-                </Typography>
-                <Typography variant="body1" paragraph>
-                    Se você tiver alguma dúvida ou precisar de assistência, não hesite em nos contatar. Estamos aqui para ajudar!
-                </Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        href="https://wa.me/5531987654321" // Substitua pelo número de WhatsApp desejado
-                        sx={{ backgroundColor: '#25D366' }}
-                    >
-                        Contato via WhatsApp 1
-                    </Button>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        href="https://wa.me/5591987654321" // Substitua pelo número de WhatsApp desejado
-                        sx={{ backgroundColor: '#25D366' }}
-                    >
-                        Contato via WhatsApp 2
-                    </Button>
-                </Box>
-            </Box>
         </Box>
     );
 }

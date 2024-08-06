@@ -16,6 +16,8 @@ html, body {
   background: linear-gradient(90deg, #3533cd, #000000); /* Gradiente linear de fundo */
 }
 
+
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -32,10 +34,4 @@ body {
 
 
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  line-height: 1.5;
-  color: #121212;
-}
+
