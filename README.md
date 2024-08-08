@@ -2,20 +2,12 @@
 
 ### Falta fazer
 
-[ ] Linkar o navbar (tabela(pag nova, dentro dela, vai ter contato), dicas(pag nova), contatos) (Ao fazer de cada um apagar)
+[ ] Criar o camponente de dicas como se fosse um form
 
-[ ] Arrumar CSS de tudo
+[ ] Form: Arrumar o CSS (caso vc julgue necessario)
 
-[ ] Fazer formulario funcinar
+[ ] Criar o pitch no md
 
-[ ] Fazer o pitch no md
+[ ] Subir para algum lugar e ficar rodando em tempo real 
 
-[ ] Usar os routes (POST, PUT, DELETE, PATCH) (Ao fazer de cada um apagar)
-
-[X] Criar componente home
-
-[X] Criar componente do grafico
-
-[ ] Criar componente dicas
-
-[ ] Criar componente contatos
+[ ] Fazer o POST e GET 
