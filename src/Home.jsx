@@ -31,7 +31,7 @@ function Home() {
           alignItems: 'flex-end',
           justifyContent: 'center',
           textAlign: 'right',
-          mt:15,
+          mt: 15,
           mb: 22,
           overflowX: 'hidden',
         }}
@@ -62,9 +62,9 @@ function Home() {
               tudo esteja em ordem para uma experiência de viagem tranquila e bem organizada.
             </Typography>
           </Box>
-          <Box 
-            sx={{ 
-              flex: 1, 
+          <Box
+            sx={{
+              flex: 1,
               p: 2,
               display: 'flex',
               justifyContent: 'flex-end',
@@ -74,11 +74,11 @@ function Home() {
             <img
               src={homeImage}
               alt="Visto bandeira de portugal e nome precisa de visto para portugal?"
-              style={{ 
-                height: 'auto', 
-                display: 'block', 
+              style={{
+                height: 'auto',
+                display: 'block',
                 borderRadius: '16px',
-                opacity: 0.4, 
+                opacity: 0.4,
                 maxWidth: '30em',
               }}
             />
@@ -94,26 +94,26 @@ function Home() {
           alignItems: 'center',
           padding: '20px',
           mb: 5,
-          ml: 40,
           overflowX: 'hidden',
           flexDirection: 'column',
         }}
       >
-        <Box sx={{ width: '100%', maxWidth: '1200px' }}>
-          <Typography variant="h4" component="h2" gutterBottom sx={{ color: "white", ml: 12 }}>
+        <Box sx={{ width: '100%', maxWidth: '1200px', textAlign: 'center' }}>
+          <Typography variant="h4" component="h2" gutterBottom sx={{ color: "white" }}>
             Média de Dias de Espera por Tipo de Visto
           </Typography>
           <Grafico />
         </Box>
         <Button
-              variant="contained"
-              color="primary"
-              onClick={handleSaibaMaisClick}
-              sx={{ mt: 2, justifyContent:"center", background:'#4f43cb', width: '20%', ml: '-42vh', mt: 5}}
-            >
-              Saiba Mais
-            </Button>
+          variant="contained"
+          color="primary"
+          onClick={handleSaibaMaisClick}
+          sx={{ mt: 5, background: '#4f43cb', width: '20%' }}
+        >
+          Saiba Mais
+        </Button>
       </Box>
+
     </Box>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Select, MenuItem, Button, Box, FormControl, InputLabel } from '@mui/material';
+import { TextField, Select, MenuItem, Button, Box, InputLabel, FormGroup, Snackbar, Alert } from '@mui/material';
 
 const Form = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +9,8 @@ const Form = () => {
         dataDeViagem: '',
         dataDeEntregaDoVisto: ''
     });
+
+    const [openSnackbar, setOpenSnackbar] = useState(false);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -20,86 +22,180 @@ const Form = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(formData);
+        const dataParaEnviar = {
+            ...formData,
+            dataDeEntregaDoVisto: formData.dataDeEntregaDoVisto || "NÃO ENTREGUE",
+        };
+        console.log(dataParaEnviar);
+        // Enviar dataParaEnviar ao banco de dados
+
+        // Abrir a notificação
+        setOpenSnackbar(true);
+    };
+
+    const handleCloseSnackbar = () => {
+        setOpenSnackbar(false);
     };
 
     return (
         <div>
-            <Box sx={{ p: 2, maxWidth: '600px', mx: 'auto', color: "white", alignItems: 'center',
-                    justifyContent: 'center',
-                    textAlign: 'center',  mb: '40px', marginBottom: 0}}>
-                <h1 >Formulário</h1>
+            <Box sx={{ p: 2, maxWidth: '600px', mx: 'auto', color: "white", textAlign: 'center', mb: '40px' }}>
+                <h1>Formulário</h1>
                 <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
-                    <TextField
-                        fullWidth
-                        label="Nome"
-                        name="nome"
-                        value={formData.nome}
-                        onChange={handleChange}
-                        margin="normal"
-                        sx={{ backgroundColor: 'white' }}
-                       
-                    />
-                    <FormControl fullWidth margin="normal">
-                        <InputLabel id="tipo-de-visto-label">Tipo de Visto</InputLabel>
+                    <FormGroup sx={{ mb: '16px', textAlign: 'left' }}>
+                        <InputLabel shrink sx={{ color: 'white', fontSize: '1.5rem', display: 'block' }}>
+                            Nome
+                        </InputLabel>
+                        <TextField
+                            name="nome"
+                            value={formData.nome}
+                            onChange={handleChange}
+                            variant="outlined"
+                            fullWidth
+                            sx={{ 
+                                backgroundColor: 'white', 
+                                borderRadius: '8px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                            }}
+                        />
+                    </FormGroup>
+
+                    <FormGroup sx={{ mb: '16px', textAlign: 'left' }}>
+                        <InputLabel shrink sx={{ color: 'white', fontSize: '1.5rem', display: 'block' }}>
+                            Tipo de Visto
+                        </InputLabel>
                         <Select
-                            labelId="tipo-de-visto-label"
                             name="tipoDeVisto"
                             value={formData.tipoDeVisto}
                             onChange={handleChange}
-                            sx={{ backgroundColor: 'white' }}
+                            fullWidth
+                            sx={{ 
+                                backgroundColor: 'white', 
+                                borderRadius: '8px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                            }}
                         >
                             <MenuItem value="Estudante">Estudante</MenuItem>
-                            <MenuItem value="Turismo">Turismo</MenuItem>
                             <MenuItem value="Trabalho">Trabalho</MenuItem>
-                            <MenuItem value="Moradia">Moradia</MenuItem>
+                            <MenuItem value="EstadiaTemporaria">Estadia Temporária</MenuItem>
+                            <MenuItem value="Residencia">Residência</MenuItem>
+                            <MenuItem value="Schengen">Schengen (Curta Duração)</MenuItem>
+                            <MenuItem value="Investidor">Investidor (Golden Visa)</MenuItem>
+                            <MenuItem value="Pesquisa">Pesquisa ou Altamente Qualificado</MenuItem>
                         </Select>
-                    </FormControl>
-                    <TextField
-                        fullWidth
-                        label="Data de Entrega dos Documentos"
-                        name="dataDeEntregaDocumentos"
-                        type="date"
-                        value={formData.dataDeEntregaDocumentos}
-                        onChange={handleChange}
-                        margin="normal"
-                        sx={{ backgroundColor: 'white' }}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                    <TextField
-                        fullWidth
-                        label="Data de Viagem"
-                        name="dataDeViagem"
-                        type="date"
-                        value={formData.dataDeViagem}
-                        onChange={handleChange}
-                        margin="normal"
-                        sx={{ backgroundColor: 'white' }}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                    <FormControl fullWidth margin="normal">
-                        <InputLabel id="data-de-entrega-do-visto-label">Data de Entrega do Visto</InputLabel>
-                        <Select
-                            labelId="data-de-entrega-do-visto-label"
+                    </FormGroup>
+
+                    <FormGroup sx={{ mb: '16px', textAlign: 'left' }}>
+                        <InputLabel shrink sx={{ color: 'white', fontSize: '1.5rem', display: 'block' }}>
+                            Data de Entrega dos Documentos
+                        </InputLabel>
+                        <TextField
+                            name="dataDeEntregaDocumentos"
+                            type="date"
+                            value={formData.dataDeEntregaDocumentos}
+                            onChange={handleChange}
+                            variant="outlined"
+                            fullWidth
+                            sx={{ 
+                                backgroundColor: 'white', 
+                                borderRadius: '8px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                            }}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </FormGroup>
+
+                    <FormGroup sx={{ mb: '16px', textAlign: 'left' }}>
+                        <InputLabel shrink sx={{ color: 'white', fontSize: '1.5rem', display: 'block' }}>
+                            Data de Viagem
+                        </InputLabel>
+                        <TextField
+                            name="dataDeViagem"
+                            type="date"
+                            value={formData.dataDeViagem}
+                            onChange={handleChange}
+                            variant="outlined"
+                            fullWidth
+                            sx={{ 
+                                backgroundColor: 'white', 
+                                borderRadius: '8px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                            }}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </FormGroup>
+
+                    <FormGroup sx={{ mb: '16px', textAlign: 'left' }}>
+                        <InputLabel shrink sx={{ color: 'white', fontSize: '1.5rem', display: 'block' }}>
+                            Data de Entrega do Visto
+                        </InputLabel>
+                        <TextField
                             name="dataDeEntregaDoVisto"
+                            type="date"
                             value={formData.dataDeEntregaDoVisto}
                             onChange={handleChange}
-                            sx={{ backgroundColor: 'white' }}
-                        >
-                            <MenuItem value="NÃO ENTREGUE">NÃO ENTREGUE</MenuItem>
-                            <MenuItem value={formData.dataDeEntregaDoVisto}>
-                                {formData.dataDeEntregaDoVisto ? formData.dataDeEntregaDoVisto : "Selecionar data"}
-                            </MenuItem>
-                        </Select>
-                    </FormControl>
-                    <Button type="submit" variant="contained" color="primary" fullWidth   sx={{ backgroundColor: ' #4f43cb', width: '15em', marginTop: '2em', marginBottom: '1em' }}>
+                            variant="outlined"
+                            fullWidth
+                            sx={{ 
+                                backgroundColor: 'white', 
+                                borderRadius: '8px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                            }}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </FormGroup>
+
+                    <Button 
+                        type="submit" 
+                        variant="contained" 
+                        color="primary" 
+                        fullWidth   
+                        sx={{ 
+                            backgroundColor: '#4f43cb', 
+                            width: '15em', 
+                            marginTop: '2em', 
+                            marginBottom: '1em' 
+                        }}
+                    >
                         Enviar
                     </Button>
                 </form>
+
+                <Snackbar
+                    open={openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={handleCloseSnackbar}
+                >
+                    <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+                        Dados enviados com sucesso!
+                    </Alert>
+                </Snackbar>
             </Box>
         </div>
     );

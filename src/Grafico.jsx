@@ -66,25 +66,26 @@ function Grafico() {
   };
 
   return (
-    <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', color: '#4f43cb' }}>
+    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '0 auto', color: '#4f43cb' }}>
       <BarChart
-        width={800}
+        width={800}  // Ou use "width='80%'" para uma largura relativa
         height={400}
         data={data}
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="tipo" stroke="#FFFFFF" tick={{ fill: '#FFFFFF' }}/>
+        <XAxis dataKey="tipo" stroke="#FFFFFF" tick={{ fill: '#FFFFFF' }} />
         <YAxis stroke="#FFFFFF" tick={{ fill: '#FFFFFF' }} />
         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
         <Legend />
-        <Bar 
-          dataKey="mediaDias" 
-          fill="#4f43cb" 
-          barSize={150} // Ajustar o tamanho da barra 
+        <Bar
+          dataKey="mediaDias"
+          fill="#4f43cb"
+          barSize={150}
         />
       </BarChart>
     </div>
+
   );
 }
 

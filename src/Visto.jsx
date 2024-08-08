@@ -13,6 +13,7 @@ function Visto() {
     const navigate = useNavigate(); // Hook para navegação
 
     useEffect(() => {
+        //MÉTODO GET
         fetch("http://localhost:3000/Contas")
             .then(resp => resp.json())
             .then(data => {

@@ -39,6 +39,14 @@
       "Data_de_entrega_documentos": "23/07/2024",
       "Data_de_Viagem": "25/09/2024",
       "Data_de_entrega_do_visto": "NÃO ENTREGUE"
+    },
+    {
+      "id": "8e23",
+      "Nome": "Tales Moreno",
+      "Tipo_de_visto": "Estudos",
+      "Data_de_entrega_documentos": "12/05/2024",
+      "Data_de_Viagem": "25/09/2024",
+      "Data_de_entrega_do_visto": "NÃO ENTREGUE"
     }
   ]
 }
